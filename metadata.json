@@ -1,0 +1,6 @@
+{
+  "name": "NAUJÉ — Bespoke Jewellery & Design",
+  "description": "High-luxury bespoke jewellery atelier by Sujeet & Nausheen. Experience seamless CAD-to-craftsmanship transformations, royal peacock meenakari, custom bridal suites, and master goldsmithing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
