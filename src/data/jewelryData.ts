@@ -539,7 +539,7 @@ export const CRAFTSMANSHIP_VIDEOS: VideoShowcase[] = [
     discipline: 'Jewels Video 1',
     fileName: 'Jewels Video 1.mp4',
     visualTheme: 'from-blue-900/60 to-slate-900',
-    fallbackStreamUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+    fallbackStreamUrl: '/Jewels_Video_1.mp4'
   },
   {
     id: 'vid-goldsmithing-setting',
@@ -550,7 +550,7 @@ export const CRAFTSMANSHIP_VIDEOS: VideoShowcase[] = [
     discipline: 'Jewels Video 2',
     fileName: 'Jewels Video 2.mp4',
     visualTheme: 'from-amber-900/60 to-slate-900',
-    fallbackStreamUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
+    fallbackStreamUrl: '/Jewels_Video_2.mp4'
   },
   {
     id: 'vid-meenakari-enameling',
@@ -561,7 +561,7 @@ export const CRAFTSMANSHIP_VIDEOS: VideoShowcase[] = [
     discipline: 'Jewels Video 3',
     fileName: 'Jewels Video 3.mp4',
     visualTheme: 'from-emerald-900/60 to-slate-900',
-    fallbackStreamUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4'
+    fallbackStreamUrl: '/Jewels_Video_3.mp4'
   },
   {
     id: 'vid-finished-polish',
@@ -572,7 +572,7 @@ export const CRAFTSMANSHIP_VIDEOS: VideoShowcase[] = [
     discipline: 'Jewels Video 4',
     fileName: 'Jewels Video 4.mp4',
     visualTheme: 'from-yellow-900/60 to-slate-900',
-    fallbackStreamUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4'
+    fallbackStreamUrl: '/Jewels_Video_4.mp4'
   }
 ];
 
