@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { JewelryPiece, getPiecePrice } from '../data/jewelryData';
+import { JewelryPiece } from '../data/jewelryData';
 import { JewelryVisual } from './JewelryVisual';
 import { 
   X, 
@@ -7,13 +7,9 @@ import {
   Compass, 
   Layers, 
   MessageCircle, 
-  ArrowRight, 
   ShieldCheck, 
   FileCode, 
-  Camera, 
-  CheckCircle2,
-  ExternalLink,
-  Star
+  Camera
 } from 'lucide-react';
 
 interface PieceDetailModalProps {
@@ -31,10 +27,8 @@ export const PieceDetailModal: React.FC<PieceDetailModalProps> = ({
 
   if (!piece) return null;
 
-  const price = getPiecePrice(piece);
-
   const whatsappInquiryUrl = `https://wa.me/917802891435?text=${encodeURIComponent(
-    `Hello Sujeet & Nausheen, I am interested in commissioning a bespoke variation of "${piece.name}".\n\nSpecifications:\n• Metal: ${piece.metal}\n• Gemstones: ${piece.primaryGem}\n• Dimensions: ${piece.dimensions}\n• CAD Ref: ${piece.cadFileName}\n• Real Archive Ref: ${piece.realFileName}\n\nCould you please share quotation range and creation timeframe?`
+    `Hello Sujeet & Nausheen, I am interested in commissioning a bespoke variation of "${piece.name}".\n\nSpecifications:\n• Metal: ${piece.metal}\n• Gemstones: ${piece.primaryGem}\n• Dimensions: ${piece.dimensions}\n• Category: ${piece.categoryLabel}\n\nCould you please share quotation range and creation timeframe?`
   )}`;
 
   return (
@@ -52,7 +46,7 @@ export const PieceDetailModal: React.FC<PieceDetailModalProps> = ({
             <span className="text-[11px] font-sans font-bold tracking-widest text-[#4A154B] uppercase px-3 py-1 bg-white rounded-full border border-[#E9D2D0]">
               {piece.categoryLabel}
             </span>
-            <span className="text-xs text-[#7D6B82]">· Archive Reference ID: {piece.id}</span>
+            <span className="text-xs text-[#7D6B82]">· Masterpiece Atelier Archive</span>
           </div>
 
           <button
@@ -80,7 +74,7 @@ export const PieceDetailModal: React.FC<PieceDetailModalProps> = ({
                       : 'text-[#5F4E64] hover:text-[#2D2232]'
                   }`}
                 >
-                  <Camera className="w-3.5 h-3.5" />
+                  <Camera className="w-3.5 h-3.5 text-[#C86A6A]" />
                   <span>Finished Masterpiece</span>
                 </button>
                 <button
@@ -96,23 +90,14 @@ export const PieceDetailModal: React.FC<PieceDetailModalProps> = ({
                 </button>
               </div>
 
-              {/* Jewelry Visual Box */}
-              <div className="relative aspect-square w-full rounded-xl border border-[#EEDAD8] overflow-hidden shadow-sm bg-white">
+              {/* Jewelry Visual Box - Clean, no technical filename badge */}
+              <div className="relative aspect-square w-full rounded-xl border border-[#EEDAD8] overflow-hidden shadow-xs bg-white">
                 <JewelryVisual
                   piece={piece}
                   mode={activeTab}
                   variant="card"
                   className="w-full h-full"
                 />
-
-                <div className="absolute bottom-2 left-2 right-2 flex justify-between items-center px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded text-[11px] text-[#5F4E64] border border-[#EEDAD8]">
-                  <span className="font-mono text-[10px] truncate max-w-[200px]">
-                    {activeTab === 'real' ? piece.realFileName : piece.cadFileName}
-                  </span>
-                  <span className="text-[#4A154B] font-bold uppercase tracking-wider text-[10px] ml-2 shrink-0">
-                    {activeTab === 'real' ? 'Fine Craft' : 'Rhino 3D'}
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -125,19 +110,18 @@ export const PieceDetailModal: React.FC<PieceDetailModalProps> = ({
           <div className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between bg-white">
             <div>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-[#E6A817] text-[#E6A817]" />
-                  ))}
-                </div>
-                <span className="text-xs font-bold font-sans tracking-wider uppercase text-[#4A154B] bg-[#FAF2F0] px-3 py-1 rounded-full border border-[#E9D2D0]">
+                <span className="text-[10px] font-sans font-bold tracking-widest uppercase text-[#4A154B] bg-[#FAF2F0] px-3 py-1 rounded-full border border-[#E9D2D0]">
                   Bespoke Commission
+                </span>
+                <span className="text-xs font-mono text-[#7D6B82]">
+                  BIS 916 HALLMARKED
                 </span>
               </div>
 
-              <h3 className="text-2xl font-serif text-[#2D2232] tracking-tight font-medium mt-2 mb-2">
+              <h3 className="text-2xl font-serif text-[#2D2232] tracking-tight font-medium mt-3 mb-2">
                 {piece.name}
               </h3>
+
               <p className="text-xs text-[#5F4E64] leading-relaxed font-sans mb-6">
                 {piece.description}
               </p>

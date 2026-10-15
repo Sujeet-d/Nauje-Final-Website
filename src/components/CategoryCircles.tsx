@@ -102,18 +102,18 @@ export const CategoryCircles: React.FC<CategoryCirclesProps> = ({
                 className="group flex flex-col items-center text-center cursor-pointer transition-transform duration-300 hover:-translate-y-1"
               >
                 {/* Circular Frame with soft pink ring border */}
-                <div className={`relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-2 transition-all duration-300 ${
+                <div className={`relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-2 transition-all duration-300 aspect-square ${
                   isSelected
                     ? 'border-2 border-[#4A154B] shadow-md scale-105'
                     : 'border-2 border-[#ECCECB] hover:border-[#4A154B]'
                 }`}>
-                  <div className="w-full h-full rounded-full overflow-hidden bg-[#FAF2F0] relative flex items-center justify-center shadow-inner">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-[#FAF2F0] relative flex items-center justify-center shadow-inner [clip-path:circle(50%_at_50%_50%)]">
                     {/* Visual: Centered neatly inside circular frame without distortion */}
                     <JewelryVisual
                       piece={cat.piece}
                       mode="real"
                       variant="circle"
-                      className="w-full h-full group-hover:scale-108 transition-transform duration-500"
+                      className="w-full h-full group-hover:scale-108 transition-transform duration-500 flex items-center justify-center"
                     />
 
                     {/* Subtle Hover Overlay */}

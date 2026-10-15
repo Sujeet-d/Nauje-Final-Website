@@ -10,18 +10,15 @@ import { CreationsGallery } from './components/CreationsGallery';
 import { BespokeProcess } from './components/BespokeProcess';
 import { CraftsmanshipVideos } from './components/CraftsmanshipVideos';
 import { FoundersStory } from './components/FoundersStory';
-import { StayConnectedBanner } from './components/StayConnectedBanner';
 import { BespokeConsultation } from './components/BespokeConsultation';
 import { Footer } from './components/Footer';
 import { PieceDetailModal } from './components/PieceDetailModal';
-import { AtelierMediaSync } from './components/AtelierMediaSync';
 import { MessageCircle } from 'lucide-react';
 
 export default function App() {
   const [selectedPieceForInquiry, setSelectedPieceForInquiry] = useState<JewelryPiece | null>(null);
   const [selectedPieceForModal, setSelectedPieceForModal] = useState<JewelryPiece | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [wishlistCount, setWishlistCount] = useState<number>(3);
 
   const scrollToConsultation = () => {
     const el = document.getElementById('consultation');
@@ -67,7 +64,6 @@ export default function App() {
       {/* 1. Top Bar & Main Header matching reference design */}
       <Header 
         onOpenConsultation={scrollToConsultation} 
-        wishlistCount={wishlistCount}
       />
 
       {/* Main Experience Flow matching reference design structure */}
@@ -116,17 +112,14 @@ export default function App() {
         {/* 10. Founders & Atelier Philosophy: Sujeet & Nausheen */}
         <FoundersStory onOpenConsultation={scrollToConsultation} />
 
-        {/* 11. "Stay Connected" Newsletter / Inquiry Banner */}
-        <StayConnectedBanner />
-
-        {/* 12. Bespoke Direct Dialogue Brief Generator (WhatsApp / Email) */}
+        {/* 11. Bespoke Direct Dialogue Brief Generator (WhatsApp / Email) */}
         <BespokeConsultation 
           initialPiece={selectedPieceForInquiry}
           onClearInitialPiece={handleClearInquiryPiece}
         />
       </main>
 
-      {/* 13. Grand Luxury Footer in Deep Plum with Payment Badges */}
+      {/* 12. Grand Luxury Footer in Deep Plum */}
       <Footer onOpenConsultation={scrollToConsultation} />
 
       {/* Modal for Deep CAD and Real Inspection */}
@@ -159,9 +152,6 @@ export default function App() {
           </div>
         </a>
       </aside>
-
-      {/* Atelier Media File Linker for local CAD, Real, and Video sync */}
-      <AtelierMediaSync />
     </div>
   );
 }

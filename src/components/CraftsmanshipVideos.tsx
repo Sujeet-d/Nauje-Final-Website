@@ -93,7 +93,8 @@ export const CraftsmanshipVideos: React.FC = () => {
   const [activeVideo, setActiveVideo] = useState<VideoShowcase | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const activeVideoUrl = activeVideo ? useMediaUrl(activeVideo.fileName) : null;
+  // Call hook unconditionally
+  const activeVideoUrl = useMediaUrl(activeVideo?.fileName || '');
 
   return (
     <section id="craftsmanship-videos" className="py-20 sm:py-24 bg-[#FAF4F2] text-[#2D2232] relative overflow-hidden border-b border-[#F0DCDB]">

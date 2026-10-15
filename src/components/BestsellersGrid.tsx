@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   ArrowRight, 
-  Compass, 
-  Camera, 
   MessageCircle, 
   Maximize2
 } from 'lucide-react';
@@ -40,22 +38,6 @@ export const BestsellersGrid: React.FC<BestsellersGridProps> = ({
     }
   ];
 
-  // Track CAD vs Real visual toggle per card
-  const [cardModes, setCardModes] = useState<Record<string, 'real' | 'cad'>>({
-    'peacock-meenakari-choker': 'real',
-    'royal-crescent-chandbali': 'real',
-    'sovereign-baroque-aquamarine-ring': 'real',
-    'art-deco-hexagonal-bracelet': 'real'
-  });
-
-  const toggleCadMode = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCardModes(prev => ({
-      ...prev,
-      [id]: prev[id] === 'cad' ? 'real' : 'cad'
-    }));
-  };
-
   return (
     <section id="bestsellers" className="py-16 sm:py-20 bg-white border-b border-[#F0DCDB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,8 +65,6 @@ export const BestsellersGrid: React.FC<BestsellersGridProps> = ({
         {/* 4 Bestseller Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {bestsellers.map((piece) => {
-            const currentMode = cardModes[piece.id] || 'real';
-
             return (
               <div
                 key={piece.id}
@@ -94,29 +74,11 @@ export const BestsellersGrid: React.FC<BestsellersGridProps> = ({
                 {/* Image Container - Clean without heart icon */}
                 <div className="relative aspect-square w-full bg-[#FAF4F2] overflow-hidden flex items-center justify-center border-b border-[#F5EAE8]">
                   
-                  {/* Top-Left CAD/Real Toggle Pill */}
-                  <button
-                    onClick={(e) => toggleCadMode(piece.id, e)}
-                    className="absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-sans font-semibold tracking-wider uppercase transition-all shadow-xs bg-white/95 hover:bg-white border border-[#EEDAD8] cursor-pointer"
-                  >
-                    {currentMode === 'cad' ? (
-                      <>
-                        <Compass className="w-3 h-3 text-cyan-600" />
-                        <span className="text-cyan-800 font-mono">CAD 3D</span>
-                      </>
-                    ) : (
-                      <>
-                        <Camera className="w-3 h-3 text-[#4A154B]" />
-                        <span className="text-[#4A154B]">Real Photo</span>
-                      </>
-                    )}
-                  </button>
-
-                  {/* Clean Visual - No technical filenames */}
+                  {/* Clean Jewellery Visual Container with consistent dimensions */}
                   <div className="w-full h-full p-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
                     <JewelryVisual
                       piece={piece}
-                      mode={currentMode}
+                      mode="real"
                       variant="card"
                       className="w-full h-full"
                     />

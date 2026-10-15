@@ -73,15 +73,19 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             className="flex items-center gap-3 group"
           >
-            {/* Elegant Floral Mandala Gold Logo Emblem */}
-            <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center p-1.5 bg-gradient-to-tr from-[#FAF2F0] to-white shadow-xs group-hover:scale-105 transition-transform duration-300">
-              <svg viewBox="0 0 40 40" className="w-full h-full text-[#4A154B]" fill="none" stroke="currentColor" strokeWidth="1.2">
-                <circle cx="20" cy="20" r="18" stroke="#D4AF37" strokeWidth="1" strokeDasharray="2 2" />
-                <path d="M20 2 L20 38 M2 20 L38 20" stroke="#D4AF37" strokeWidth="0.8" opacity="0.6" />
-                <circle cx="20" cy="20" r="10" stroke="#4A154B" strokeWidth="1.2" />
-                <circle cx="20" cy="20" r="4" fill="#4A154B" />
-                <path d="M20 6 C24 14 24 26 20 34 C16 26 16 14 20 6 Z" stroke="#D4AF37" strokeWidth="1" fill="#FAF2F0" fillOpacity="0.5" />
-                <path d="M6 20 C14 24 26 24 34 20 C26 16 14 16 6 20 Z" stroke="#D4AF37" strokeWidth="1" fill="#FAF2F0" fillOpacity="0.5" />
+            {/* Refined Fine Jewellery Solitaire Diamond & Imperial N Emblem */}
+            <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center p-1 bg-gradient-to-tr from-[#3A0E3C] to-[#5E1B5F] shadow-sm group-hover:scale-105 transition-transform duration-300">
+              <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
+                <circle cx="20" cy="20" r="18" stroke="#D4AF37" strokeWidth="0.8" strokeDasharray="1.5 2" />
+                <circle cx="20" cy="20" r="15.5" stroke="#FCE7B8" strokeWidth="0.6" />
+                {/* Brilliant Diamond Silhouette */}
+                <polygon points="12,14 28,14 32,19 20,31 8,19" fill="none" stroke="#D4AF37" strokeWidth="1" />
+                <polygon points="15,14 25,14 23,19 17,19" fill="#FCE7B8" opacity="0.6" />
+                <polygon points="17,19 20,31 23,19" fill="#D4AF37" opacity="0.85" />
+                <polygon points="8,19 20,31 17,19" fill="#D4AF37" opacity="0.4" />
+                <polygon points="32,19 20,31 23,19" fill="#D4AF37" opacity="0.4" />
+                {/* Solitaire Spark */}
+                <circle cx="20" cy="11.5" r="1" fill="#FFF2D6" />
               </svg>
             </div>
 

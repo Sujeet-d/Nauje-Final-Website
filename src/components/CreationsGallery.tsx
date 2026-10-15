@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { JewelryPiece, JEWELRY_COLLECTION } from '../data/jewelryData';
 import { JewelryVisual } from './JewelryVisual';
 import { 
-  Compass, 
   MessageCircle, 
   Search, 
-  Camera,
   Maximize2
 } from 'lucide-react';
 
@@ -20,17 +18,6 @@ export const CreationsGallery: React.FC<CreationsGalleryProps> = ({
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  
-  // Track visual mode per card: 'real' by default, or 'cad'
-  const [cardModes, setCardModes] = useState<Record<string, 'real' | 'cad'>>({});
-
-  const toggleCardMode = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCardModes((prev) => ({
-      ...prev,
-      [id]: prev[id] === 'cad' ? 'real' : 'cad'
-    }));
-  };
 
   const categories = [
     { id: 'all', label: 'All Masterpieces', count: JEWELRY_COLLECTION.length },
@@ -119,8 +106,6 @@ export const CreationsGallery: React.FC<CreationsGalleryProps> = ({
         {filteredPieces.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {filteredPieces.map((piece) => {
-              const currentMode = cardModes[piece.id] || 'real';
-
               return (
                 <div
                   key={piece.id}
@@ -130,29 +115,11 @@ export const CreationsGallery: React.FC<CreationsGalleryProps> = ({
                   {/* Top Image Container with CAD Toggle - No Heart Icon */}
                   <div className="relative aspect-square w-full bg-[#FAF4F2] overflow-hidden flex items-center justify-center border-b border-[#F5EAE8]">
                     
-                    {/* CAD / Real Flip Button */}
-                    <button
-                      onClick={(e) => toggleCardMode(piece.id, e)}
-                      className="absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-sans font-semibold tracking-wider uppercase transition-all shadow-xs bg-white/95 hover:bg-white border border-[#EEDAD8] cursor-pointer"
-                    >
-                      {currentMode === 'cad' ? (
-                        <>
-                          <Compass className="w-3 h-3 text-cyan-600" />
-                          <span className="text-cyan-800 font-mono">CAD 3D</span>
-                        </>
-                      ) : (
-                        <>
-                          <Camera className="w-3 h-3 text-[#4A154B]" />
-                          <span className="text-[#4A154B]">Real Photo</span>
-                        </>
-                      )}
-                    </button>
-
-                    {/* Clean Visual */}
+                    {/* Clean Visual Container with Consistent Dimensions */}
                     <div className="w-full h-full p-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
                       <JewelryVisual
                         piece={piece}
-                        mode={currentMode}
+                        mode="real"
                         variant="card"
                         className="w-full h-full"
                       />

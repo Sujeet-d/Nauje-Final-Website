@@ -40,7 +40,7 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({
   // Visual sizing & padding based on variant
   const imgPaddingClass = 
     variant === 'circle' 
-      ? 'p-3.5 sm:p-4 object-contain' 
+      ? 'p-2 sm:p-2.5 object-contain max-h-full max-w-full' 
       : variant === 'theater'
       ? 'p-4 sm:p-8 object-contain'
       : 'p-3 sm:p-4 object-contain';

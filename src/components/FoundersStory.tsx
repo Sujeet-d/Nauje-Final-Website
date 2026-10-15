@@ -1,5 +1,6 @@
 import React from 'react';
 import { MessageCircle, Heart, Compass, Sparkles, Feather, ShieldCheck, Award } from 'lucide-react';
+import { FoundersMonogram } from './FoundersMonogram';
 
 interface FoundersStoryProps {
   onOpenConsultation: () => void;
@@ -46,10 +47,10 @@ export const FoundersStory: React.FC<FoundersStoryProps> = ({ onOpenConsultation
                   </span>
                 </div>
 
-                {/* Center Founders Monogram & Crest */}
-                <div className="relative z-10 text-center my-auto py-8">
-                  <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-[#FAF2F0] via-white to-[#F5E6E4] border-2 border-[#4A154B] flex items-center justify-center text-[#4A154B] font-serif text-3xl font-light shadow-md mb-5">
-                    S & N
+                {/* Center Founders Monogram & Crest - S&N Haute Joaillerie Insignia */}
+                <div className="relative z-10 text-center my-auto py-6 flex flex-col items-center">
+                  <div className="mb-4">
+                    <FoundersMonogram className="w-28 h-28 sm:w-32 sm:h-32" />
                   </div>
 
                   <h3 className="text-2xl sm:text-3xl font-serif text-[#2D2232] tracking-wide font-medium">

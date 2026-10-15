@@ -56,19 +56,37 @@ export const CadComparisonSlider: React.FC<CadComparisonSliderProps> = ({
     }
   };
 
+  const scrollActiveButtonIntoView = (idx: number) => {
+    if (!selectorScrollRef.current) return;
+    const container = selectorScrollRef.current;
+    const buttons = container.querySelectorAll('button');
+    if (idx === 0) {
+      container.scrollTo({ left: 0, behavior: 'smooth' });
+    } else if (buttons[idx]) {
+      const btn = buttons[idx] as HTMLElement;
+      const left = btn.offsetLeft - container.offsetLeft - 16;
+      container.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+    }
+  };
+
   const handleSelectPiece = (idx: number) => {
     setSelectedPieceIndex(idx);
     setSliderPos(50);
+    scrollActiveButtonIntoView(idx);
   };
 
   const nextPiece = () => {
-    setSelectedPieceIndex((prev) => (prev + 1) % showpieces.length);
+    const nextIdx = (selectedPieceIndex + 1) % showpieces.length;
+    setSelectedPieceIndex(nextIdx);
     setSliderPos(50);
+    scrollActiveButtonIntoView(nextIdx);
   };
 
   const prevPiece = () => {
-    setSelectedPieceIndex((prev) => (prev - 1 + showpieces.length) % showpieces.length);
+    const prevIdx = (selectedPieceIndex - 1 + showpieces.length) % showpieces.length;
+    setSelectedPieceIndex(prevIdx);
     setSliderPos(50);
+    scrollActiveButtonIntoView(prevIdx);
   };
 
   return (
@@ -94,11 +112,23 @@ export const CadComparisonSlider: React.FC<CadComparisonSliderProps> = ({
           </p>
         </div>
 
-        {/* Showpiece Selector Carousel - Fully visible with start alignment to prevent cutting off first item */}
-        <div className="relative mb-8">
+        {/* Showpiece Selector Carousel - Fully visible with start padding & scroll controls */}
+        <div className="relative mb-8 max-w-5xl mx-auto flex items-center gap-2">
+          <button
+            onClick={() => {
+              if (selectorScrollRef.current) {
+                selectorScrollRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+              }
+            }}
+            aria-label="Scroll left"
+            className="hidden sm:flex w-8 h-8 rounded-full border border-[#D8C4C2] hover:border-[#4A154B] hover:text-[#4A154B] items-center justify-center text-[#554659] transition-colors shrink-0 bg-white shadow-xs cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
           <div 
             ref={selectorScrollRef}
-            className="flex items-center justify-start md:justify-center gap-2.5 overflow-x-auto px-4 py-2 scrollbar-none"
+            className="flex items-center gap-2.5 overflow-x-auto px-4 py-2 scrollbar-none w-full scroll-smooth justify-start"
           >
             {showpieces.map((piece, idx) => (
               <button
@@ -115,6 +145,18 @@ export const CadComparisonSlider: React.FC<CadComparisonSliderProps> = ({
               </button>
             ))}
           </div>
+
+          <button
+            onClick={() => {
+              if (selectorScrollRef.current) {
+                selectorScrollRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+              }
+            }}
+            aria-label="Scroll right"
+            className="hidden sm:flex w-8 h-8 rounded-full border border-[#D8C4C2] hover:border-[#4A154B] hover:text-[#4A154B] items-center justify-center text-[#554659] transition-colors shrink-0 bg-white shadow-xs cursor-pointer"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Main Comparison Theater Card */}
