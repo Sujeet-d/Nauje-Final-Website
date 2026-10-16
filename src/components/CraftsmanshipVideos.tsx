@@ -95,7 +95,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onOpenTheater }) => {
               className="w-full h-full object-cover"
             >
               {customVideoUrl && <source src={customVideoUrl} type="video/mp4" />}
-              <source src={`/Jewels_Video_${vIndex}.mp4`} type="video/mp4" />
+              <source src={`videos/Jewels_Video_${vIndex}.mp4`} type="video/mp4" />
               <source src={`/Jewels Video ${vIndex}.mp4`} type="video/mp4" />
               <source src={`/videos/Jewels_Video_${vIndex}.mp4`} type="video/mp4" />
               <source src={`/videos/Jewels Video ${vIndex}.mp4`} type="video/mp4" />
@@ -377,7 +377,7 @@ export const CraftsmanshipVideos: React.FC = () => {
                 {theaterVideo.subtitle}
               </span>
               <div className="flex items-center gap-4 text-white/70 font-mono text-[11px]">
-                <span>Duration: {theaterVideo.duration}</span>
+                {/* <span>Duration: {theaterVideo.duration}</span> */}
                 <span>·</span>
                 <span className="text-[#D4AF37]">HD 1080p Master Quality</span>
               </div>
