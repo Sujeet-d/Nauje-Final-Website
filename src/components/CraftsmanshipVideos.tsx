@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { CRAFTSMANSHIP_VIDEOS, VideoShowcase } from '../data/jewelryData';
 import { useMediaUrl } from '../data/mediaStore';
-import { 
-  Play, 
+import {
+  Play,
   Pause,
-  X, 
-  Flame, 
+  X,
+  Flame,
   Film,
   Sparkles,
   Maximize2,
@@ -16,10 +16,10 @@ import {
 } from 'lucide-react';
 
 const VIDEO_POSTERS: Record<string, string> = {
-  'vid-cad-precision': '/thumbnails/video1-poster.jpg',
-  'vid-goldsmithing-setting': '/thumbnails/video2-poster.jpg',
-  'vid-meenakari-enameling': '/thumbnails/video3-poster.jpg',
-  'vid-finished-polish': '/thumbnails/video4-poster.jpg'
+  // 'vid-cad-precision': '/thumbnails/video1-poster.jpg',
+  // 'vid-goldsmithing-setting': '/thumbnails/video2-poster.jpg',
+  // 'vid-meenakari-enameling': '/thumbnails/video3-poster.jpg',
+  // 'vid-finished-polish': '/thumbnails/video4-poster.jpg'
 };
 
 const getVideoIndex = (id: string): number => {
@@ -40,7 +40,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onOpenTheater }) => {
   const customPosterUrl = useMediaUrl(posterPath);
   const activePoster = customPosterUrl || posterPath;
 
-  const [isPlayingInline, setIsPlayingInline] = useState(false);
+  const [isPlayingInline, setIsPlayingInline] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [videoError, setVideoError] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -83,68 +83,94 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onOpenTheater }) => {
       <div className="relative aspect-[16/10] bg-[#160B18] overflow-hidden flex items-center justify-center">
         {/* Inline Active HTML5 Video Player */}
         {isPlayingInline ? (
+
           <div className="relative w-full h-full bg-black">
             <video
               ref={inlineVideoRef}
               autoPlay
-              playsInline
+              muted
               loop
-              muted={isMuted}
-              onLoadedData={() => setHasLoaded(true)}
+              playsInline
+              preload="metadata"
+              poster={activePoster}
+              onPlaying={() => {
+                setIsPlayingInline(true);
+                setVideoError(false);
+              }}
+              onPause={() => setIsPlayingInline(false)}
               onError={() => setVideoError(true)}
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             >
-              {customVideoUrl && <source src={customVideoUrl} type="video/mp4" />}
-              <source src={`videos/Jewels_Video_${vIndex}.mp4`} type="video/mp4" />
-              <source src={`/Jewels Video ${vIndex}.mp4`} type="video/mp4" />
-              <source src={`/videos/Jewels_Video_${vIndex}.mp4`} type="video/mp4" />
-              <source src={`/videos/Jewels Video ${vIndex}.mp4`} type="video/mp4" />
-              <source src={`/${encodeURIComponent(video.fileName)}`} type="video/mp4" />
-              <source src={`/${video.fileName}`} type="video/mp4" />
-              <source src={video.fallbackStreamUrl} type="video/mp4" />
+              {customVideoUrl && (
+                <source src={customVideoUrl} type="video/mp4" />
+              )}
+              <source
+                src={`/videos/Jewels_Video_${vIndex}.mp4`}
+                type="video/mp4"
+              />
+              <source
+                src={`/videos/Jewels Video ${vIndex}.mp4`}
+                type="video/mp4"
+              />
+              <source
+                src={`/${encodeURIComponent(video.fileName)}`}
+                type="video/mp4"
+              />
+              <source
+                src={`/${video.fileName}`}
+                type="video/mp4"
+              />
+              <source
+                src={video.fallbackStreamUrl}
+                type="video/mp4"
+              />
             </video>
 
-            {/* Quick Inline Controls Overlay */}
-            <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between z-20 bg-black/60 backdrop-blur-xs px-2.5 py-1.5 rounded-lg border border-white/10">
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleTogglePlay}
-                  aria-label={isPlayingInline ? "Pause video" : "Play video"}
-                  className="p-1 rounded text-white hover:text-[#D4AF37] transition-colors cursor-pointer"
-                >
-                  {isPlayingInline ? <Pause className="w-4 h-4 fill-white" /> : <Play className="w-4 h-4 fill-white" />}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleToggleMute}
-                  aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-                  className="p-1 rounded text-white/80 hover:text-white transition-colors cursor-pointer"
-                >
-                  {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
-                </button>
-              </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#160B18]/70 via-transparent to-black/20 pointer-events-none" />
 
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-[#F8D2D0] font-mono tracking-wider">
-                  PLAYING
-                </span>
-                <button
-                  type="button"
-                  onClick={onOpenTheater}
-                  aria-label="Open fullscreen theater"
-                  className="p-1 rounded text-white/80 hover:text-[#D4AF37] transition-colors cursor-pointer"
-                  title="Expand Theater View"
-                >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </button>
-              </div>
+            <div className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-black/65 backdrop-blur-sm rounded-full text-[10px] text-white/90 font-mono tracking-wider border border-white/10">
+              {video.discipline}
+            </div>
+
+            <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between z-20 bg-black/60 backdrop-blur-sm px-2.5 py-1.5 rounded-lg border border-white/10">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const player = inlineVideoRef.current;
+                  if (!player) return;
+
+                  if (player.paused) {
+                    player.play().catch(console.warn);
+                  } else {
+                    player.pause();
+                  }
+                }}
+                aria-label={isPlayingInline ? "Pause video" : "Play video"}
+                className="p-1 text-white hover:text-[#D4AF37]"
+              >
+                {isPlayingInline ? (
+                  <Pause className="w-4 h-4 fill-white" />
+                ) : (
+                  <Play className="w-4 h-4 fill-white" />
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={onOpenTheater}
+                aria-label="Open fullscreen theater"
+                className="flex items-center gap-1 text-white/90 hover:text-[#D4AF37] text-[10px] font-mono"
+              >
+                CINEMA VIEW <Maximize2 className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
+
         ) : (
           /* Poster Thumbnail Screen with Play Trigger */
-          <div 
-            onClick={handleTogglePlay} 
+          <div
+            onClick={handleTogglePlay}
             className="w-full h-full relative cursor-pointer"
           >
             <img
@@ -253,7 +279,7 @@ export const CraftsmanshipVideos: React.FC = () => {
   return (
     <section id="craftsmanship-videos" className="py-20 sm:py-24 bg-[#FAF4F2] text-[#2D2232] relative overflow-hidden border-b border-[#F0DCDB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-[#E9D2D0] text-[#4A154B] text-xs tracking-widest uppercase font-bold rounded-full mb-3 shadow-xs">
@@ -341,8 +367,8 @@ export const CraftsmanshipVideos: React.FC = () => {
                 className="w-full h-full object-contain"
               >
                 {theaterCustomUrl && <source src={theaterCustomUrl} type="video/mp4" />}
-                <source src={`/Jewels_Video_${theaterIndex}.mp4`} type="video/mp4" />
-                <source src={`/Jewels Video ${theaterIndex}.mp4`} type="video/mp4" />
+                <source src={`/videos/Jewels_Video_${theaterIndex}.mp4`} type="video/mp4" />
+                <source src={`/videos/Jewels Video ${theaterIndex}.mp4`} type="video/mp4" />
                 <source src={`/videos/Jewels_Video_${theaterIndex}.mp4`} type="video/mp4" />
                 <source src={`/videos/Jewels Video ${theaterIndex}.mp4`} type="video/mp4" />
                 <source src={`/${encodeURIComponent(theaterVideo.fileName)}`} type="video/mp4" />
