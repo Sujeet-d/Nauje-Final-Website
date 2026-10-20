@@ -15,11 +15,11 @@ import {
   CheckCircle2
 } from 'lucide-react';
 
-const VIDEO_POSTERS: Record<string, string> = {
-  // 'vid-cad-precision': '/thumbnails/video1-poster.jpg',
-  // 'vid-goldsmithing-setting': '/thumbnails/video2-poster.jpg',
-  // 'vid-meenakari-enameling': '/thumbnails/video3-poster.jpg',
-  // 'vid-finished-polish': '/thumbnails/video4-poster.jpg'
+const VIDEO_POSTERS: Record<string, { webp: string; jpg: string }> = {
+  'vid-cad-precision': { webp: '/thumbnails/video1-poster.webp', jpg: '/thumbnails/video1-poster.jpg' },
+  'vid-goldsmithing-setting': { webp: '/thumbnails/video2-poster.webp', jpg: '/thumbnails/video2-poster.jpg' },
+  'vid-meenakari-enameling': { webp: '/thumbnails/video3-poster.webp', jpg: '/thumbnails/video3-poster.jpg' },
+  'vid-finished-polish': { webp: '/thumbnails/video4-poster.webp', jpg: '/thumbnails/video4-poster.jpg' }
 };
 
 const getVideoIndex = (id: string): number => {
@@ -36,14 +36,17 @@ interface VideoCardProps {
 
 const VideoCard: React.FC<VideoCardProps> = ({ video, onOpenTheater }) => {
   const vIndex = getVideoIndex(video.id);
-  const posterPath = VIDEO_POSTERS[video.id] || `/thumbnails/video${vIndex}-poster.jpg`;
-  const customPosterUrl = useMediaUrl(posterPath);
-  const activePoster = customPosterUrl || posterPath;
+  const posterConfig = VIDEO_POSTERS[video.id] || {
+    webp: `/thumbnails/video${vIndex}-poster.webp`,
+    jpg: `/thumbnails/video${vIndex}-poster.jpg`
+  };
+  const customPosterUrl = useMediaUrl(`/thumbnails/video${vIndex}-poster.jpg`);
+  const activePoster = customPosterUrl || posterConfig.jpg;
 
-  const [isPlayingInline, setIsPlayingInline] = useState(true);
+  // Default to false so NO video network traffic occurs on initial page load
+  const [isPlayingInline, setIsPlayingInline] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [videoError, setVideoError] = useState(false);
-  const [hasLoaded, setHasLoaded] = useState(false);
   const inlineVideoRef = useRef<HTMLVideoElement>(null);
 
   const customVideoUrl = useMediaUrl(video.fileName);
@@ -173,12 +176,16 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onOpenTheater }) => {
             onClick={handleTogglePlay}
             className="w-full h-full relative cursor-pointer"
           >
-            <img
-              src={activePoster}
-              alt={video.title}
-              loading="lazy"
-              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-            />
+            <picture className="w-full h-full">
+              <source type="image/webp" srcSet={posterConfig.webp} />
+              <img
+                src={activePoster}
+                alt={video.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+              />
+            </picture>
 
             {/* Cinematic Vignette */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#160B18] via-black/35 to-black/20" />
@@ -362,17 +369,14 @@ export const CraftsmanshipVideos: React.FC = () => {
                 autoPlay
                 playsInline
                 preload="auto"
-                poster={VIDEO_POSTERS[theaterVideo.id] || `/thumbnails/video${theaterIndex}-poster.jpg`}
+                poster={VIDEO_POSTERS[theaterVideo.id]?.webp || `/thumbnails/video${theaterIndex}-poster.webp`}
                 onError={() => setLoadError(true)}
                 className="w-full h-full object-contain"
               >
                 {theaterCustomUrl && <source src={theaterCustomUrl} type="video/mp4" />}
                 <source src={`/videos/Jewels_Video_${theaterIndex}.mp4`} type="video/mp4" />
                 <source src={`/videos/Jewels Video ${theaterIndex}.mp4`} type="video/mp4" />
-                <source src={`/videos/Jewels_Video_${theaterIndex}.mp4`} type="video/mp4" />
-                <source src={`/videos/Jewels Video ${theaterIndex}.mp4`} type="video/mp4" />
                 <source src={`/${encodeURIComponent(theaterVideo.fileName)}`} type="video/mp4" />
-                <source src={`/${theaterVideo.fileName}`} type="video/mp4" />
                 <source src={theaterVideo.fallbackStreamUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>

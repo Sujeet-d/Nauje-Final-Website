@@ -72,6 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
             href="#" 
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             className="flex items-center gap-3 group"
+            aria-label="NAUJÉ Design & Jewels Home"
           >
             {/* Refined Fine Jewellery Solitaire Diamond & Imperial N Emblem */}
             <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center p-1 bg-gradient-to-tr from-[#3A0E3C] to-[#5E1B5F] shadow-sm group-hover:scale-105 transition-transform duration-300">

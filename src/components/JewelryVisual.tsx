@@ -9,32 +9,45 @@ interface JewelryVisualProps {
   className?: string;
   showOverlayDetails?: boolean;
   variant?: 'card' | 'theater' | 'modal' | 'circle';
+  priority?: boolean;
 }
 
 export const JewelryVisual: React.FC<JewelryVisualProps> = ({
   piece,
   mode,
   className = '',
-  variant = 'card'
+  variant = 'card',
+  priority = false
 }) => {
   const [directFailed, setDirectFailed] = useState(false);
   const [assetFailed, setAssetFailed] = useState(false);
+  const [webpFailed, setWebpFailed] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const targetFile = mode === 'cad' ? piece.cadFileName : piece.realFileName;
 
   // 1. Check in-memory persistent store from IndexedDB
   const customUrl = useMediaUrl(targetFile);
 
-  // 2. Direct server URL candidates (from Vercel /public directory)
+  // 2. Base filename without extension for webp lookups
+  const baseName = targetFile.replace(/\.[^/.]+$/, '');
+
+  // 3. Web-optimized WebP paths
+  const webp600 = `/optimized/${encodeURIComponent(baseName)}-600.webp`;
+  const webp1200 = `/optimized/${encodeURIComponent(baseName)}-1200.webp`;
+
+  // 4. Fallback original raw paths
   const directServerUrl = `/${encodeURIComponent(targetFile)}`;
   const directServerUrlPlain = `/${targetFile}`;
 
-  const activeSrc = customUrl 
-    ? customUrl 
-    : !directFailed 
-    ? directServerUrl 
-    : !assetFailed 
-    ? directServerUrlPlain 
+  const activeSrc = customUrl
+    ? customUrl
+    : !webpFailed
+    ? (variant === 'circle' || variant === 'card' ? webp600 : webp1200)
+    : !directFailed
+    ? directServerUrl
+    : !assetFailed
+    ? directServerUrlPlain
     : null;
 
   // Visual sizing & padding based on variant
@@ -45,31 +58,82 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({
       ? 'p-4 sm:p-8 object-contain'
       : 'p-3 sm:p-4 object-contain';
 
+  // Responsive sizes attribute
+  const sizesAttr = 
+    variant === 'circle'
+      ? '(max-width: 640px) 144px, 176px'
+      : variant === 'card'
+      ? '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px'
+      : '(max-width: 1024px) 100vw, 850px';
+
+  const imageAlt = `${piece.name} - ${mode === 'cad' ? '3D CAD Blueprint' : 'Bespoke Fine Jewellery'} by NAUJÉ Design & Jewels`;
+
   return (
     <div className={`relative overflow-hidden w-full h-full select-none flex items-center justify-center ${className}`}>
       {activeSrc ? (
         <div className={`relative w-full h-full flex items-center justify-center ${
           mode === 'cad' ? 'bg-[#0B1524]' : 'bg-[#FAF4F2]'
         }`}>
-          <img
-            src={activeSrc}
-            alt={`${piece.name}`}
-            referrerPolicy="no-referrer"
-            onError={() => {
-              if (customUrl) {
-                // Keep trying direct
-              } else if (!directFailed) {
-                setDirectFailed(true);
-              } else {
-                setAssetFailed(true);
-              }
-            }}
-            className={`w-full h-full transition-transform duration-500 ${imgPaddingClass}`}
-          />
+          {/* Subtle loading placeholder shimmer */}
+          {!isLoaded && !customUrl && (
+            <div 
+              aria-hidden="true" 
+              className={`absolute inset-0 animate-pulse ${
+                mode === 'cad' ? 'bg-[#101F33]' : 'bg-[#F5EAE8]'
+              }`}
+            />
+          )}
+
+          {!customUrl && !webpFailed ? (
+            <picture className="w-full h-full flex items-center justify-center">
+              <source
+                type="image/webp"
+                srcSet={`${webp600} 600w, ${webp1200} 1200w`}
+                sizes={sizesAttr}
+              />
+              <img
+                src={variant === 'theater' || variant === 'modal' ? webp1200 : webp600}
+                alt={imageAlt}
+                loading={priority ? 'eager' : 'lazy'}
+                decoding={priority ? 'sync' : 'async'}
+                fetchPriority={priority ? 'high' : 'auto'}
+                referrerPolicy="no-referrer"
+                onLoad={() => setIsLoaded(true)}
+                onError={() => {
+                  setWebpFailed(true);
+                }}
+                className={`w-full h-full transition-opacity duration-300 ${imgPaddingClass} ${
+                  isLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            </picture>
+          ) : (
+            <img
+              src={activeSrc}
+              alt={imageAlt}
+              loading={priority ? 'eager' : 'lazy'}
+              decoding={priority ? 'sync' : 'async'}
+              fetchPriority={priority ? 'high' : 'auto'}
+              referrerPolicy="no-referrer"
+              onLoad={() => setIsLoaded(true)}
+              onError={() => {
+                if (customUrl) {
+                  // Keep trying direct
+                } else if (!directFailed) {
+                  setDirectFailed(true);
+                } else {
+                  setAssetFailed(true);
+                }
+              }}
+              className={`w-full h-full transition-opacity duration-300 ${imgPaddingClass} ${
+                isLoaded || customUrl ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          )}
 
           {/* Minimal non-technical CAD Badge */}
           {mode === 'cad' && variant !== 'circle' && (
-            <div className="absolute top-2.5 right-2.5 px-2 py-0.5 bg-[#0B1524]/90 border border-cyan-500/40 rounded text-[9px] font-mono text-cyan-300 pointer-events-none">
+            <div className="absolute top-2.5 right-2.5 px-2 py-0.5 bg-[#0B1524]/90 border border-cyan-500/40 rounded text-[9px] font-mono text-cyan-300 pointer-events-none z-10">
               CAD 3D
             </div>
           )}

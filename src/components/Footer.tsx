@@ -38,8 +38,8 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           
-          {/* Column 1: Brand Info & Socials (4 cols) */}
-          <div className="lg:col-span-4 space-y-5">
+          {/* Column 1: Brand Info & Socials (5 cols) */}
+          <div className="lg:col-span-5 space-y-5">
             {/* Logo */}
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-full border border-[#D4AF37]/60 flex items-center justify-center p-1.5 bg-[#420E43]">
@@ -57,7 +57,7 @@ export const Footer: React.FC<FooterProps> = ({
                   NAUJÉ
                 </span>
                 <span className="text-[8px] tracking-[0.3em] uppercase text-[#D4AF37] font-sans font-medium mt-1 leading-none">
-                  JEWELLERY & DESIGN
+                  DESIGN & JEWELS
                 </span>
               </div>
             </div>
@@ -148,41 +148,7 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 3: Customer Service (2 cols) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-sans font-bold uppercase tracking-widest text-white">
-              CUSTOMER SERVICE
-            </h4>
-            <ul className="space-y-2.5 text-xs text-[#E3BFBD]">
-              <li>
-                <a href="#process" onClick={(e) => { e.preventDefault(); handleLink('process'); }} className="hover:text-white transition-colors">
-                  Track Order
-                </a>
-              </li>
-              <li>
-                <a href="#process" onClick={(e) => { e.preventDefault(); handleLink('process'); }} className="hover:text-white transition-colors">
-                  Shipping & Delivery
-                </a>
-              </li>
-              <li>
-                <a href="#consultation" onClick={(e) => { e.preventDefault(); handleLink('consultation'); }} className="hover:text-white transition-colors">
-                  Returns & Exchange
-                </a>
-              </li>
-              <li>
-                <a href="#consultation" onClick={(e) => { e.preventDefault(); handleLink('consultation'); }} className="hover:text-white transition-colors">
-                  FAQ's
-                </a>
-              </li>
-              <li>
-                <a href="#cad-comparison" onClick={(e) => { e.preventDefault(); handleLink('cad-comparison'); }} className="hover:text-white transition-colors">
-                  Size Guide
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Information (2 cols) */}
+          {/* Column 3: Information (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <h4 className="text-xs font-sans font-bold uppercase tracking-widest text-white">
               INFORMATION
@@ -211,8 +177,8 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 5: Bespoke Concierge (No payment methods) (2 cols) */}
-          <div className="lg:col-span-2 space-y-4">
+          {/* Column 4: Bespoke Concierge (3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-sans font-bold uppercase tracking-widest text-white">
               BESPOKE CONCIERGE
             </h4>
@@ -243,7 +209,7 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="bg-[#240625] py-4 border-t border-[#461148] text-[11px] text-[#BA9391] text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>
-            © 2026 NAUJÉ Jewellery & Design. All Rights Reserved.
+            © 2026 NAUJÉ Design & Jewels. All Rights Reserved.
           </span>
           <span className="text-[10px] text-[#A67E7C]">
             Crafted with passion by Sujeet & Nausheen.

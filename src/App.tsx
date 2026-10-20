@@ -56,7 +56,7 @@ export default function App() {
   };
 
   const floatingWhatsAppUrl = `https://wa.me/917802891435?text=${encodeURIComponent(
-    "Hello Sujeet & Nausheen, I am browsing the NAUJÉ website and would love to consult on a custom bespoke piece."
+    "Hello Sujeet & Nausheen, I am browsing the NAUJÉ Design & Jewels website and would love to consult on a custom bespoke piece."
   )}`;
 
   return (

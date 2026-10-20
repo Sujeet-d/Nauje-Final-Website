@@ -33,7 +33,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Kicker Tag */}
             <div className="inline-block">
               <span className="text-[11px] sm:text-xs font-sans tracking-[0.25em] text-[#4A154B] uppercase font-bold">
-                CRAFTED TO CELEBRATE YOU
+                NAUJÉ DESIGN & JEWELS · CRAFTED TO CELEBRATE YOU
               </span>
             </div>
 
@@ -47,7 +47,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Subtitle */}
             <p className="text-sm sm:text-base text-[#5F4E64] font-sans leading-relaxed max-w-lg">
-              Discover exquisite jewellery that blends royal heritage craftsmanship with modern 3D CAD precision. Bespoke heirlooms handcrafted by Sujeet & Nausheen.
+              Welcome to <strong>NAUJÉ Design & Jewels</strong>. Discover exquisite bespoke jewellery that blends royal heritage craftsmanship with modern 3D CAD precision, handcrafted by Sujeet & Nausheen.
             </p>
 
             {/* Buttons Row */}
@@ -121,6 +121,7 @@ export const Hero: React.FC<HeroProps> = ({
                   piece={flagshipPiece}
                   mode="real"
                   variant="theater"
+                  priority={true}
                   className="w-full h-full"
                 />
               </div>

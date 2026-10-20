@@ -92,13 +92,13 @@ export const FoundersStory: React.FC<FoundersStoryProps> = ({ onOpenConsultation
 
             <div className="space-y-4 text-sm text-[#5F4E64] font-sans leading-relaxed">
               <p>
-                Founded by <strong>Sujeet & Nausheen</strong>, NAUJÉ was born out of a rebellion against cookie-cutter luxury showrooms. In an era of mass casting and hollowed compromises, we created a private atelier dedicated solely to bespoke commissions.
+                Founded by <strong>Sujeet & Nausheen</strong>, <strong>NAUJÉ Design & Jewels</strong> was born out of a rebellion against cookie-cutter luxury showrooms. In an era of mass casting and hollowed compromises, we created a private atelier dedicated solely to bespoke commissions.
               </p>
               <p>
                 Whether you walk into our dialogue with a napkin sketch, family heirloom gemstones passed down through generations, or a vision for a royal wedding choker, we walk with you through every stage: sub-millimeter 3D Rhino CAD drafting, authentic lost-wax gold casting, and microscope-guided diamond setting.
               </p>
               <p>
-                No two creations from NAUJÉ are ever identical. Every curve is balanced to your anatomy, and every gemstone is personally sourced and hallmarked under BIS standards.
+                No two creations from <strong>NAUJÉ Design & Jewels</strong> are ever identical. Every curve is balanced to your anatomy, and every gemstone is personally sourced and hallmarked under BIS standards.
               </p>
             </div>
 

@@ -75,20 +75,6 @@ export const CadComparisonSlider: React.FC<CadComparisonSliderProps> = ({
     scrollActiveButtonIntoView(idx);
   };
 
-  const nextPiece = () => {
-    const nextIdx = (selectedPieceIndex + 1) % showpieces.length;
-    setSelectedPieceIndex(nextIdx);
-    setSliderPos(50);
-    scrollActiveButtonIntoView(nextIdx);
-  };
-
-  const prevPiece = () => {
-    const prevIdx = (selectedPieceIndex - 1 + showpieces.length) % showpieces.length;
-    setSelectedPieceIndex(prevIdx);
-    setSliderPos(50);
-    scrollActiveButtonIntoView(prevIdx);
-  };
-
   return (
     <section id="cad-comparison" className="relative py-20 bg-gradient-to-b from-white via-[#FAF4F2] to-white text-[#2D2232] overflow-hidden border-b border-[#F0DCDB]">
       {/* Background radial glow */}
@@ -171,30 +157,6 @@ export const CadComparisonSlider: React.FC<CadComparisonSliderProps> = ({
               <h3 className="text-2xl sm:text-3xl font-serif text-[#2D2232] mt-0.5">
                 {currentPiece.name}
               </h3>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-semibold font-sans text-[#4A154B] px-3.5 py-1.5 bg-[#FAF2F0] rounded-full border border-[#E9D2D0]">
-                Bespoke Atelier Commission
-              </span>
-
-              {/* Prev / Next Showpiece */}
-              <div className="flex items-center gap-1.5">
-                <button
-                  onClick={prevPiece}
-                  aria-label="Previous showpiece"
-                  className="w-9 h-9 rounded-full border border-[#D8C4C2] hover:border-[#4A154B] hover:text-[#4A154B] flex items-center justify-center text-[#554659] transition-colors cursor-pointer"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={nextPiece}
-                  aria-label="Next showpiece"
-                  className="w-9 h-9 rounded-full border border-[#D8C4C2] hover:border-[#4A154B] hover:text-[#4A154B] flex items-center justify-center text-[#554659] transition-colors cursor-pointer"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
             </div>
           </div>
 

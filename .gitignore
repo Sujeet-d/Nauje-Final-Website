@@ -7,4 +7,5 @@ coverage/
 .env*
 !.env.example
 
-/public/Real Crafted Images Zip File.zip
+*.zip
+*.tar.gz

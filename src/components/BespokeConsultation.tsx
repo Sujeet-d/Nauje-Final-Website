@@ -61,7 +61,7 @@ export const BespokeConsultation: React.FC<BespokeConsultationProps> = ({
 
   // Pre-filled WhatsApp message
   const generateWhatsAppMessage = () => {
-    let msg = `Hello Sujeet & Nausheen, I am contacting NAUJÉ Atelier to discuss a bespoke jewellery commission.\n\n`;
+    let msg = `Hello Sujeet & Nausheen, I am contacting NAUJÉ Design & Jewels to discuss a bespoke jewellery commission.\n\n`;
     msg += `• Category: ${selectedCategory}\n`;
     msg += `• Metal Preference: ${selectedMetal}\n`;
     msg += `• Gemstone Vision: ${selectedGem}\n`;
@@ -74,13 +74,13 @@ export const BespokeConsultation: React.FC<BespokeConsultationProps> = ({
 
   const whatsappUrl = `https://wa.me/917802891435?text=${generateWhatsAppMessage()}`;
   const directWelcomeWhatsAppUrl = `https://wa.me/917802891435?text=${encodeURIComponent(
-    "Hello Sujeet & Nausheen! I am reaching out to NAUJÉ Atelier. I would love to discuss a bespoke jewellery commission and explore ideas/quotations for a custom piece."
+    "Hello Sujeet & Nausheen! I am reaching out to NAUJÉ Design & Jewels. I would love to discuss a bespoke jewellery commission and explore ideas/quotations for a custom piece."
   )}`;
 
   const handleEmailAction = () => {
-    const subject = encodeURIComponent(`Bespoke Jewellery Inquiry — NAUJÉ Atelier [${selectedCategory}]`);
+    const subject = encodeURIComponent(`Bespoke Jewellery Inquiry — NAUJÉ Design & Jewels [${selectedCategory}]`);
     const body = encodeURIComponent(
-      `Dear Sujeet & Nausheen,\n\nI am interested in commissioning a bespoke jewellery piece with NAUJÉ.\n\nCategory: ${selectedCategory}\nMetal: ${selectedMetal}\nGemstones: ${selectedGem}\nNotes: ${customNotes}\n\nPlease let me know when we can arrange a private consultation.\n\nWarm regards,\n`
+      `Dear Sujeet & Nausheen,\n\nI am interested in commissioning a bespoke jewellery piece with NAUJÉ Design & Jewels.\n\nCategory: ${selectedCategory}\nMetal: ${selectedMetal}\nGemstones: ${selectedGem}\nNotes: ${customNotes}\n\nPlease let me know when we can arrange a private consultation.\n\nWarm regards,\n`
     );
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   };
@@ -101,7 +101,7 @@ export const BespokeConsultation: React.FC<BespokeConsultationProps> = ({
           </h2>
 
           <p className="text-sm sm:text-base text-[#5F4E64] font-sans leading-relaxed">
-            NAUJÉ is an intentional bespoke atelier, not a retail store. Discuss your concepts, request technical quotations, and review CAD drafts directly with founders Sujeet & Nausheen over WhatsApp.
+            <strong>NAUJÉ Design & Jewels</strong> is an intentional bespoke atelier, not a retail store. Discuss your concepts, request technical quotations, and review CAD drafts directly with founders Sujeet & Nausheen over WhatsApp.
           </p>
         </div>
 

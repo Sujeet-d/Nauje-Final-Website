@@ -95,7 +95,8 @@ export const PieceDetailModal: React.FC<PieceDetailModalProps> = ({
                 <JewelryVisual
                   piece={piece}
                   mode={activeTab}
-                  variant="card"
+                  variant="modal"
+                  priority={true}
                   className="w-full h-full"
                 />
               </div>
