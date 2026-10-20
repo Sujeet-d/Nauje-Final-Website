@@ -53,10 +53,10 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({
   // Visual sizing & padding based on variant
   const imgPaddingClass = 
     variant === 'circle' 
-      ? 'p-2 sm:p-2.5 object-contain max-h-full max-w-full' 
+      ? 'p0 sm:p-0.5 object-cover max-h-full max-w-full' 
       : variant === 'theater'
-      ? 'p-4 sm:p-8 object-contain'
-      : 'p-3 sm:p-4 object-contain';
+      ? 'p-2 sm:p-2 object-contain'
+      : 'p0 sm:p0 object-cover';
 
   // Responsive sizes attribute
   const sizesAttr = 
@@ -69,9 +69,9 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({
   const imageAlt = `${piece.name} - ${mode === 'cad' ? '3D CAD Blueprint' : 'Bespoke Fine Jewellery'} by NAUJÉ Design & Jewels`;
 
   return (
-    <div className={`relative overflow-hidden w-full h-full select-none flex items-center justify-center ${className}`}>
+    <div className={`relative overflow-hidden rounded-xl w-full h-full select-none flex items-center justify-center ${className}`}>
       {activeSrc ? (
-        <div className={`relative w-full h-full flex items-center justify-center ${
+        <div className={`relative w-full h-full rounded-xl flex items-center justify-center ${
           mode === 'cad' ? 'bg-[#0B1524]' : 'bg-[#FAF4F2]'
         }`}>
           {/* Subtle loading placeholder shimmer */}
@@ -85,7 +85,7 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({
           )}
 
           {!customUrl && !webpFailed ? (
-            <picture className="w-full h-full flex items-center justify-center">
+            <picture className="w-full h-full rounded-xl flex items-center justify-center">
               <source
                 type="image/webp"
                 srcSet={`${webp600} 600w, ${webp1200} 1200w`}
@@ -102,7 +102,7 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({
                 onError={() => {
                   setWebpFailed(true);
                 }}
-                className={`w-full h-full transition-opacity duration-300 ${imgPaddingClass} ${
+                className={`max-w-full max-h-full w-auto h-auto rounded-xl transition-opacity duration-300 ${imgPaddingClass} ${
                   isLoaded ? 'opacity-100' : 'opacity-0'
                 }`}
               />
@@ -125,7 +125,7 @@ export const JewelryVisual: React.FC<JewelryVisualProps> = ({
                   setAssetFailed(true);
                 }
               }}
-              className={`w-full h-full transition-opacity duration-300 ${imgPaddingClass} ${
+              className={`max-w-full max-h-full w-auto h-auto rounded-xl transition-opacity duration-300 ${imgPaddingClass} ${
                 isLoaded || customUrl ? 'opacity-100' : 'opacity-0'
               }`}
             />
