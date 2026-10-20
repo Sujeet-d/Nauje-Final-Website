@@ -1,26 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
   <defs>
-    <radialGradient id="plum" cx="50%" cy="45%" r="65%">
-      <stop offset="0%" stop-color="#5E1B5F" />
-      <stop offset="65%" stop-color="#3A0E3C" />
+    <radialGradient id="favPlum" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#551457" />
+      <stop offset="65%" stop-color="#350B36" />
       <stop offset="100%" stop-color="#1E0520" />
     </radialGradient>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFF2D6" />
-      <stop offset="30%" stop-color="#E5C158" />
-      <stop offset="60%" stop-color="#D4AF37" />
-      <stop offset="100%" stop-color="#B38B22" />
+    <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF6D8" />
+      <stop offset="25%" stop-color="#F2D16B" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="75%" stop-color="#B88636" />
+      <stop offset="100%" stop-color="#93641A" />
     </linearGradient>
+    <filter id="favGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.45" />
+    </filter>
   </defs>
-  <circle cx="32" cy="32" r="30" fill="url(#plum)" />
-  <circle cx="32" cy="32" r="28" stroke="url(#gold)" stroke-width="0.8" stroke-dasharray="1 1.5" />
-  <circle cx="32" cy="32" r="25.5" stroke="url(#gold)" stroke-width="0.7" fill="none" />
-  {/* Brilliant Diamond Silhouette */}
-  <polygon points="22,23 42,23 46,29 32,46 18,29" fill="none" stroke="url(#gold)" stroke-width="1.2" />
-  <polygon points="25,23 39,23 35,29 29,29" fill="url(#gold)" opacity="0.6" />
-  <polygon points="29,29 32,46 35,29" fill="url(#gold)" opacity="0.9" />
-  <polygon points="18,29 32,46 29,29" fill="url(#gold)" opacity="0.4" />
-  <polygon points="46,29 32,46 35,29" fill="url(#gold)" opacity="0.4" />
-  {/* Solitaire Accent Spark */}
-  <circle cx="32" cy="19.5" r="1.5" fill="#FFF2D6" />
+
+  <!-- Background rounded squircle / circle -->
+  <rect width="320" height="320" rx="72" fill="url(#favPlum)" />
+  <rect width="304" height="304" x="8" y="8" rx="64" fill="none" stroke="url(#favGold)" stroke-width="4" opacity="0.45" />
+
+  <!-- Official NAUJÉ Diamond Symbol (Offset y + 35 to perfectly center 45..275) -->
+  <g transform="translate(0, 35)" stroke="url(#favGold)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="10.5" filter="url(#favGlow)">
+    <!-- 1. Outer Diamond Contour -->
+    <polygon points="56,12 264,12 312,76 160,240 8,76" />
+    
+    <!-- 2. Top Table Horizontal Line -->
+    <line x1="56" y1="12" x2="264" y2="12" stroke-width="12" />
+
+    <!-- 3. Main Girdle Horizontal Baseline (Continuous edge-to-edge, prominent) -->
+    <line x1="8" y1="76" x2="312" y2="76" stroke-width="13" />
+
+    
+    <!-- 4. Crown Central Rhombus -->
+    <polygon points="160,12 124,44 160,76 196,44" />
+    
+    <!-- 5. Crown Left Facets -->
+    <line x1="96" y1="12" x2="124" y2="44" />
+    <line x1="124" y1="44" x2="96" y2="76" />
+    <line x1="96" y1="12" x2="48" y2="76" />
+    <line x1="56" y1="12" x2="48" y2="76" />
+    
+    <!-- 6. Crown Right Facets -->
+    <line x1="224" y1="12" x2="196" y2="44" />
+    <line x1="196" y1="44" x2="224" y2="76" />
+    <line x1="224" y1="12" x2="272" y2="76" />
+    <line x1="264" y1="12" x2="272" y2="76" />
+    
+    <!-- 7. Pavilion Center Needle Kite -->
+    <polygon points="160,76 144,185 160,240 176,185" />
+    
+    <!-- 8. Pavilion Main Rays -->
+    <line x1="96" y1="76" x2="144" y2="185" />
+    <line x1="224" y1="76" x2="176" y2="185" />
+    <line x1="48" y1="76" x2="144" y2="185" />
+    <line x1="272" y1="76" x2="176" y2="185" />
+    
+    <!-- 10. Pavilion Outer Diagonal Ribs -->
+    <line x1="48" y1="76" x2="128" y2="172" />
+    <line x1="128" y1="172" x2="148" y2="218" />
+    <line x1="272" y1="76" x2="192" y2="172" />
+    <line x1="192" y1="172" x2="172" y2="218" />
+  </g>
 </svg>

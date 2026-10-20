@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageCircle, Heart, Compass, Sparkles, Feather, ShieldCheck, Award } from 'lucide-react';
 import { FoundersMonogram } from './FoundersMonogram';
+import { NaujeDiamondSymbol } from './NaujeDiamondSymbol';
 
 interface FoundersStoryProps {
   onOpenConsultation: () => void;
@@ -33,14 +34,9 @@ export const FoundersStory: React.FC<FoundersStoryProps> = ({ onOpenConsultation
 
                 {/* Top Seal */}
                 <div className="relative z-10 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full border border-[#D4AF37] flex items-center justify-center p-1 bg-white">
-                      <svg viewBox="0 0 24 24" className="w-full h-full text-[#D4AF37]" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <circle cx="12" cy="12" r="10" />
-                        <circle cx="12" cy="12" r="3" fill="#D4AF37" />
-                      </svg>
-                    </div>
-                    <span className="font-serif tracking-[0.2em] text-[#4A154B] text-sm uppercase font-semibold">Naujé</span>
+                  <div className="flex items-center gap-2.5">
+                    <NaujeDiamondSymbol className="w-8 h-6.5" variant="standalone" glow={true} />
+                    <span className="font-serif tracking-[0.22em] text-[#4A154B] text-sm uppercase font-medium">NAUJÉ</span>
                   </div>
                   <span className="text-[10px] uppercase font-mono tracking-widest text-[#7D6B82]">
                     ATELIER FOUNDERS
@@ -81,7 +77,7 @@ export const FoundersStory: React.FC<FoundersStoryProps> = ({ onOpenConsultation
           <div className="lg:col-span-7 space-y-6">
             
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FAF2F0] border border-[#E9D2D0] text-[#4A154B] text-xs tracking-widest uppercase font-bold rounded-full">
-              <Heart className="w-3.5 h-3.5 text-[#C86A6A]" />
+              <NaujeDiamondSymbol className="w-3.5 h-3 shrink-0" glow={true} />
               <span>The Atelier Vision</span>
             </div>
 

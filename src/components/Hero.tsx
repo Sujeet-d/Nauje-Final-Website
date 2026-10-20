@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { JEWELRY_COLLECTION } from '../data/jewelryData';
 import { JewelryVisual } from './JewelryVisual';
+import { NaujeDiamondSymbol } from './NaujeDiamondSymbol';
 
 interface HeroProps {
   onOpenConsultation: () => void;
@@ -30,9 +31,10 @@ export const Hero: React.FC<HeroProps> = ({
           
           {/* Left Column: Editorial Headline & Actions (6 cols) */}
           <div className="lg:col-span-6 lg:pr-6 space-y-6 sm:space-y-8 z-10">
-            {/* Kicker Tag */}
-            <div className="inline-block">
-              <span className="text-[11px] sm:text-xs font-sans tracking-[0.25em] text-[#4A154B] uppercase font-bold">
+            {/* Kicker Tag with Official Diamond Emblem */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 backdrop-blur-xs border border-[#E9D2D0] rounded-full shadow-2xs">
+              <NaujeDiamondSymbol className="w-4 h-3.5" glow={true} />
+              <span className="text-[10px] sm:text-[11px] font-sans tracking-[0.22em] text-[#4A154B] uppercase font-bold">
                 NAUJÉ DESIGN & JEWELS · CRAFTED TO CELEBRATE YOU
               </span>
             </div>

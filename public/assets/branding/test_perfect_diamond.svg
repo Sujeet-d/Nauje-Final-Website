@@ -1,0 +1,42 @@
+<svg viewBox="0 0 320 250" width="640" height="500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="250" fill="#1a081c"/>
+  <g stroke="#F5D36E" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Outer Contour -->
+    <polygon points="54,16 266,16 314,78 160,244 6,78" />
+    
+    <!-- Table -->
+    <line x1="54" y1="16" x2="266" y2="16" />
+    
+    <!-- Girdle Horizontal Line -->
+    <line x1="6" y1="78" x2="314" y2="78" stroke-width="5.5" />
+    
+    <!-- Crown Down-Right Diagonals -->
+    <line x1="54" y1="16" x2="107" y2="78" />
+    <line x1="107" y1="16" x2="160" y2="78" />
+    <line x1="160" y1="16" x2="213" y2="78" />
+    <line x1="213" y1="16" x2="268" y2="78" />
+    
+    <!-- Crown Down-Left Diagonals -->
+    <line x1="266" y1="16" x2="213" y2="78" />
+    <line x1="213" y1="16" x2="160" y2="78" />
+    <line x1="160" y1="16" x2="107" y2="78" />
+    <line x1="107" y1="16" x2="52" y2="78" />
+    
+    <!-- Additional outer crown corner rays if present -->
+    <line x1="54" y1="16" x2="52" y2="78" />
+    <line x1="266" y1="16" x2="268" y2="78" />
+    
+    <!-- Pavilion Center Kite (Open) -->
+    <polygon points="160,78 138,178 160,244 182,178" />
+    
+    <!-- Pavilion Rays -->
+    <line x1="107" y1="78" x2="138" y2="178" />
+    <line x1="213" y1="78" x2="182" y2="178" />
+    
+    <line x1="52" y1="78" x2="105" y2="178" />
+    <line x1="268" y1="78" x2="215" y2="178" />
+    
+    <line x1="105" y1="178" x2="138" y2="220" />
+    <line x1="215" y1="178" x2="182" y2="220" />
+  </g>
+</svg>

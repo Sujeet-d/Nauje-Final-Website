@@ -1,0 +1,62 @@
+import subprocess
+
+svg_content = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 250" width="320" height="250">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCEAB8" />
+      <stop offset="25%" stop-color="#E5C158" />
+      <stop offset="50%" stop-color="#C59B27" />
+      <stop offset="75%" stop-color="#E1BB53" />
+      <stop offset="100%" stop-color="#936D19" />
+    </linearGradient>
+    <filter id="goldShine" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-color="#553000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <g stroke="url(#gold)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.2" filter="url(#goldShine)">
+    <!-- Outer Contour -->
+    <polygon points="55,10 265,10 318,98 168,246 2,98" />
+    
+    <!-- Girdle Horizontal Line -->
+    <line x1="2" y1="98" x2="318" y2="98" />
+    
+    <!-- Crown Center Rhombus -->
+    <polygon points="160,10 123,54 160,98 197,54" />
+    
+    <!-- Crown Left Inner Diagonals -->
+    <line x1="95" y1="10" x2="123" y2="54" />
+    <line x1="123" y1="54" x2="87" y2="98" />
+    <line x1="95" y1="10" x2="38" y2="98" />
+    <line x1="55" y1="10" x2="38" y2="98" />
+    
+    <!-- Crown Right Inner Diagonals -->
+    <line x1="225" y1="10" x2="197" y2="54" />
+    <line x1="197" y1="54" x2="233" y2="98" />
+    <line x1="225" y1="10" x2="282" y2="98" />
+    <line x1="265" y1="10" x2="282" y2="98" />
+    
+    <!-- Pavilion Center Needle Kite -->
+    <polygon points="160,98 145,196 168,236 180,196" />
+    
+    <!-- Pavilion Culet Connector -->
+    <line x1="168" y1="236" x2="168" y2="246" />
+    
+    <!-- Pavilion Diagonals to Needle / Inner Points -->
+    <line x1="87" y1="98" x2="145" y2="196" />
+    <line x1="233" y1="98" x2="180" y2="196" />
+    
+    <!-- Pavilion Outer Boundary Parallel Rays -->
+    <line x1="38" y1="98" x2="145" y2="196" />
+    <line x1="282" y1="98" x2="180" y2="196" />
+    
+    <!-- Pavilion Needle to Culet Base Lines -->
+    <line x1="145" y1="196" x2="168" y2="246" />
+    <line x1="180" y1="196" x2="168" y2="246" />
+  </g>
+</svg>"""
+
+with open('public/assets/branding/nauje_diamond_official.svg', 'w') as f:
+    f.write(svg_content)
+
+print("Saved public/assets/branding/nauje_diamond_official.svg")

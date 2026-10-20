@@ -6,8 +6,8 @@ interface FoundersMonogramProps {
 }
 
 export const FoundersMonogram: React.FC<FoundersMonogramProps> = ({ 
-  className = "w-28 h-28 sm:w-32 sm:h-32",
-  size = 160
+  className = "w-32 h-32 sm:w-36 sm:h-36",
+  size = 180
 }) => {
   return (
     <div className={`relative inline-flex items-center justify-center select-none ${className}`}>
@@ -15,146 +15,156 @@ export const FoundersMonogram: React.FC<FoundersMonogramProps> = ({
         viewBox="0 0 200 200"
         width={size}
         height={size}
-        className="w-full h-full drop-shadow-xl"
+        className="w-full h-full drop-shadow-2xl"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        aria-label="NAUJÉ Design & Jewels Official Founders Seal"
+        role="img"
       >
         <defs>
-          {/* Imperial Plum Radial Gradient */}
-          <radialGradient id="plumBg" cx="50%" cy="45%" r="65%">
-            <stop offset="0%" stopColor="#5E1B5F" />
-            <stop offset="65%" stopColor="#3A0E3C" />
+          {/* Imperial Deep Plum Radial Background */}
+          <radialGradient id="monogramPlumBg" cx="50%" cy="45%" r="65%">
+            <stop offset="0%" stopColor="#551457" />
+            <stop offset="60%" stopColor="#350B36" />
             <stop offset="100%" stopColor="#1E0520" />
           </radialGradient>
 
-          {/* Warm Polished Champagne Gold Gradient */}
-          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFF2D6" />
-            <stop offset="25%" stopColor="#E5C158" />
+          {/* Warm Polished Champagne 22K Gold Gradient */}
+          <linearGradient id="monogramGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FFF5D6" />
+            <stop offset="20%" stopColor="#F5D36E" />
             <stop offset="50%" stopColor="#D4AF37" />
-            <stop offset="75%" stopColor="#B38B22" />
-            <stop offset="100%" stopColor="#F5E4B2" />
+            <stop offset="75%" stopColor="#B38428" />
+            <stop offset="100%" stopColor="#8C6016" />
           </linearGradient>
 
           {/* Gold Rim Gradient */}
-          <linearGradient id="goldRim" x1="0%" y1="100%" x2="100%" y2="0%">
+          <linearGradient id="monogramGoldRim" x1="0%" y1="100%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#B88A24" />
             <stop offset="50%" stopColor="#FCE7B8" />
             <stop offset="100%" stopColor="#8C6615" />
           </linearGradient>
 
-          {/* Soft Shadow Filter for Diamond & Letterforms */}
-          <filter id="insigniaGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodColor="#000000" floodOpacity="0.5" />
+          {/* Soft Luxurious Drop Shadow */}
+          <filter id="monogramGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000000" floodOpacity="0.55" />
           </filter>
         </defs>
 
         {/* Outer Circular Base */}
-        <circle cx="100" cy="100" r="96" fill="url(#plumBg)" />
+        <circle cx="100" cy="100" r="96" fill="url(#monogramPlumBg)" />
 
         {/* Outer Beaded Granulation Ring */}
         <circle 
           cx="100" 
           cy="100" 
           r="92" 
-          stroke="url(#goldRim)" 
-          strokeWidth="1.6" 
-          strokeDasharray="2 3.5" 
+          stroke="url(#monogramGoldRim)" 
+          strokeWidth="1.4" 
+          strokeDasharray="2.5 3.5" 
         />
 
-        {/* Solid Double Gold Concentric Frame */}
+        {/* Double Concentric Gold Rims */}
         <circle 
           cx="100" 
           cy="100" 
           r="86" 
-          stroke="url(#goldRim)" 
-          strokeWidth="1.4" 
+          stroke="url(#monogramGoldRim)" 
+          strokeWidth="1.6" 
         />
         <circle 
           cx="100" 
           cy="100" 
           r="82" 
-          stroke="url(#goldRim)" 
-          strokeWidth="0.6" 
-          strokeOpacity="0.6"
+          stroke="url(#monogramGoldRim)" 
+          strokeWidth="0.8" 
+          strokeOpacity="0.7"
         />
 
-        {/* Top Scintillating Solitaire Diamond Star */}
-        <path
-          d="M100 24 L102.5 31.5 L110 34 L102.5 36.5 L100 44 L97.5 36.5 L90 34 L97.5 31.5 Z"
-          fill="url(#goldGradient)"
-          filter="url(#insigniaGlow)"
+        {/* Center: The EXACT Official NAUJÉ Embossed Gold Diamond Symbol */}
+        <image 
+          href="/assets/branding/nauje_official_gold_diamond.png" 
+          x="46" 
+          y="58" 
+          width="108" 
+          height="83.5" 
+          preserveAspectRatio="xMidYMid meet" 
+          filter="url(#monogramGlow)" 
         />
 
-        {/* Bottom Petite Diamond Accent */}
-        <path
-          d="M100 168 L103.5 172.5 L100 177 L96.5 172.5 Z"
-          fill="url(#goldGradient)"
-          opacity="0.9"
-        />
+        {/* Scaled Crisp Vector Reinforcement */}
+        <g 
+          transform="translate(48.8, 60) scale(0.32)" 
+          stroke="url(#monogramGoldGrad)" 
+          fill="none" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          strokeWidth="6"
+          opacity="0.65"
+        >
+          {/* 1. Outer Diamond Contour */}
+          <polygon points="56,12 264,12 312,76 160,240 8,76" />
+          
+          {/* 2. Top Table Horizontal Line */}
+          <line x1="56" y1="12" x2="264" y2="12" strokeWidth="8" />
 
-        {/* Curved Path Guides for Typography */}
-        <path
-          id="textCurveTop"
-          d="M 40,100 A 60,60 0 0,1 160,100"
-          fill="none"
-        />
-        <path
-          id="textCurveBottom"
-          d="M 162,100 A 62,62 0 0,1 38,100"
-          fill="none"
-        />
-
-        {/* Top Arch Label: NAUJÉ ATELIER */}
-        <text fill="url(#goldGradient)" fontSize="7.5" fontFamily="'Cinzel', 'Playfair Display', serif" letterSpacing="0.32em" fontWeight="600" opacity="0.95">
-          <textPath href="#textCurveTop" startOffset="50%" textAnchor="middle">
-            NAUJÉ · ATELIER
-          </textPath>
-        </text>
-
-        {/* Bottom Arch Label: HAUTE JOAILLERIE */}
-        <text fill="url(#goldGradient)" fontSize="6" fontFamily="'Montserrat', sans-serif" letterSpacing="0.28em" fontWeight="500" opacity="0.8">
-          <textPath href="#textCurveBottom" startOffset="50%" textAnchor="middle">
-            HAUTE JOAILLERIE
-          </textPath>
-        </text>
-
-        {/* Center: High-Jewellery Solitaire Brilliant Diamond with Majestic Facets & N monogram */}
-        <g filter="url(#insigniaGlow)" transform="translate(100, 102)">
-          {/* Brilliant Diamond Silhouette & Crown Facets */}
-          {/* Table */}
-          <polygon points="-28,-24 28,-24 16,-12 -16,-12" fill="url(#goldGradient)" opacity="0.95" />
-          {/* Star facets left/right */}
-          <polygon points="-28,-24 -16,-12 -38,-12" fill="url(#goldGradient)" opacity="0.75" />
-          <polygon points="28,-24 38,-12 16,-12" fill="url(#goldGradient)" opacity="0.75" />
-          {/* Upper girdle facets */}
-          <polygon points="-38,-12 -16,-12 -22,-4 -40,-6" fill="url(#goldGradient)" opacity="0.85" />
-          <polygon points="-16,-12 16,-12 0,-4" fill="url(#goldGradient)" opacity="0.9" />
-          <polygon points="16,-12 38,-12 40,-6 22,-4" fill="url(#goldGradient)" opacity="0.85" />
-          {/* Girdle bar */}
-          <line x1="-40" y1="-5" x2="40" y2="-5" stroke="url(#goldGradient)" strokeWidth="1.2" />
-
-          {/* Pavilion (Lower facet cone tapering to culet) */}
-          <polygon points="-40,-5 0,38 40,-5" fill="none" stroke="url(#goldGradient)" strokeWidth="1.5" />
-          {/* Pavilion main facets */}
-          <polygon points="-40,-5 0,38 -15,0" fill="url(#goldGradient)" opacity="0.6" />
-          <polygon points="40,-5 0,38 15,0" fill="url(#goldGradient)" opacity="0.6" />
-          <polygon points="-15,0 0,38 15,0" fill="url(#goldGradient)" opacity="0.8" />
-          <polygon points="-15,0 0,-4 15,0 0,38" fill="url(#goldGradient)" opacity="0.35" />
-
-          {/* Sparkling Diamond Culet Star */}
-          <circle cx="0" cy="38" r="2" fill="#FFF2D6" />
-
-          {/* Pure Imperial 'N' Monogram Crest nestled elegantly inside the radiant diamond heart */}
-          <g transform="translate(0, 0)">
-            {/* Left Serif Column */}
-            <path d="M-14,-18 L-8,-18 L-8,-16 L-10,-16 L-10,14 L-8,14 L-8,16 L-16,16 L-16,14 L-14,14 Z" fill="url(#goldGradient)" />
-            {/* Diagonal Slash */}
-            <path d="M-10,-16 L10,14 L12,14 L-8,-16 Z" fill="url(#goldGradient)" opacity="0.95" />
-            {/* Right Serif Column */}
-            <path d="M8,-18 L16,-18 L16,-16 L14,-16 L14,14 L16,14 L16,16 L10,16 L10,14 L12,14 L12,-16 L10,-16 L10,-18 Z" fill="url(#goldGradient)" />
-          </g>
+          {/* 3. Main Girdle Horizontal Baseline (Continuous edge-to-edge, prominent) */}
+          <line x1="8" y1="76" x2="312" y2="76" strokeWidth="9" />
+          
+          {/* 4. Crown Central Rhombus */}
+          <polygon points="160,12 124,44 160,76 196,44" />
+          
+          {/* 5. Crown Left Facets */}
+          <line x1="96" y1="12" x2="124" y2="44" />
+          <line x1="124" y1="44" x2="96" y2="76" />
+          <line x1="96" y1="12" x2="48" y2="76" />
+          <line x1="56" y1="12" x2="48" y2="76" />
+          
+          {/* 6. Crown Right Facets */}
+          <line x1="224" y1="12" x2="196" y2="44" />
+          <line x1="196" y1="44" x2="224" y2="76" />
+          <line x1="224" y1="12" x2="272" y2="76" />
+          <line x1="264" y1="12" x2="272" y2="76" />
+          
+          {/* 7. Pavilion Center Needle Kite (Open kite matching official reference) */}
+          <polygon points="160,76 144,185 160,240 176,185" />
+          
+          {/* 8. Pavilion Main Rays */}
+          <line x1="96" y1="76" x2="144" y2="185" />
+          <line x1="224" y1="76" x2="176" y2="185" />
+          <line x1="48" y1="76" x2="144" y2="185" />
+          <line x1="272" y1="76" x2="176" y2="185" />
+          
+          {/* 9. Pavilion Outer Diagonal Ribs */}
+          <line x1="48" y1="76" x2="128" y2="172" />
+          <line x1="128" y1="172" x2="148" y2="218" />
+          <line x1="272" y1="76" x2="192" y2="172" />
+          <line x1="192" y1="172" x2="172" y2="218" />
         </g>
+
+        {/* Top Arc Typography: NAUJÉ · DESIGN & JEWELS */}
+        <path
+          id="sealCurveTop"
+          d="M 32,100 A 68,68 0 0,1 168,100"
+          fill="none"
+        />
+        <text fill="url(#monogramGoldGrad)" fontSize="7" fontFamily="'Cinzel', 'Playfair Display', serif" letterSpacing="0.28em" fontWeight="600">
+          <textPath href="#sealCurveTop" startOffset="50%" textAnchor="middle">
+            NAUJÉ · DESIGN &amp; JEWELS
+          </textPath>
+        </text>
+
+        {/* Bottom Arc Typography: Upright, unmirrored, naturally readable left-to-right */}
+        <path
+          id="sealCurveBottom"
+          d="M 28,100 A 72,72 0 0,0 172,100"
+          fill="none"
+        />
+        <text fill="url(#monogramGoldGrad)" fontSize="5.8" fontFamily="'Cinzel', 'Playfair Display', serif" letterSpacing="0.22em" fontWeight="600" opacity="0.95">
+          <textPath href="#sealCurveBottom" startOffset="50%" textAnchor="middle">
+            SUJEET &amp; NAUSHEEN · ATELIER
+          </textPath>
+        </text>
       </svg>
     </div>
   );

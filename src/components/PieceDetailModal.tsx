@@ -11,6 +11,7 @@ import {
   FileCode, 
   Camera
 } from 'lucide-react';
+import { NaujeDiamondSymbol } from './NaujeDiamondSymbol';
 
 interface PieceDetailModalProps {
   piece: JewelryPiece | null;
@@ -42,11 +43,12 @@ export const PieceDetailModal: React.FC<PieceDetailModalProps> = ({
       >
         {/* Top bar with close button */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#F0DCDB] bg-[#FAF4F2]">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
+            <NaujeDiamondSymbol className="w-5 h-4" glow={true} />
             <span className="text-[11px] font-sans font-bold tracking-widest text-[#4A154B] uppercase px-3 py-1 bg-white rounded-full border border-[#E9D2D0]">
               {piece.categoryLabel}
             </span>
-            <span className="text-xs text-[#7D6B82]">· Masterpiece Atelier Archive</span>
+            <span className="text-xs text-[#7D6B82] hidden sm:inline">· NAUJÉ Design & Jewels Archive</span>
           </div>
 
           <button

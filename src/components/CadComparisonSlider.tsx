@@ -220,20 +220,6 @@ export const CadComparisonSlider: React.FC<CadComparisonSliderProps> = ({
             </div>
           </div>
 
-          {/* Smooth Range Slider Controller for touch/mobile accessibility */}
-          <div className="mt-6 px-2 sm:px-6 flex items-center gap-4 text-xs font-sans text-[#7D6B82]">
-            <span className="font-mono text-cyan-800 font-semibold shrink-0">100% CAD</span>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={sliderPos}
-              onChange={(e) => setSliderPos(Number(e.target.value))}
-              aria-label="CAD to Real comparison slider position"
-              className="w-full accent-[#4A154B] cursor-pointer h-2 bg-[#EEDAD8] rounded-lg"
-            />
-            <span className="font-sans text-[#4A154B] font-semibold shrink-0">100% REAL</span>
-          </div>
 
           {/* Bottom Piece Specifications & Inquiries */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-[#F0DCDB] text-xs text-[#5F4E64]">

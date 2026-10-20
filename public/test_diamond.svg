@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 78" width="500" height="390" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2C17C"/>
+      <stop offset="25%" stop-color="#C59B4B"/>
+      <stop offset="50%" stop-color="#F2DFAB"/>
+      <stop offset="75%" stop-color="#B88636"/>
+      <stop offset="100%" stop-color="#8F6220"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Frame -->
+  <polygon points="17,3 83,3 98.5,25.5 50,75.5 1.5,25.5" stroke="url(#gold)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <!-- Girdle Line -->
+  <line x1="1.5" y1="25.5" x2="98.5" y2="25.5" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round"/>
+  
+  <!-- Crown Facets -->
+  <!-- Central Rhombus -->
+  <polygon points="50,3 36,14.25 50,25.5 64,14.25" stroke="url(#gold)" stroke-width="2.0" stroke-linejoin="round"/>
+  
+  <!-- Diagonals across crown -->
+  <line x1="26" y1="3" x2="36" y2="14.25" stroke="url(#gold)" stroke-width="2.0"/>
+  <line x1="36" y1="14.25" x2="22" y2="25.5" stroke="url(#gold)" stroke-width="2.0"/>
+  
+  <line x1="74" y1="3" x2="64" y2="14.25" stroke="url(#gold)" stroke-width="2.0"/>
+  <line x1="64" y1="14.25" x2="78" y2="25.5" stroke="url(#gold)" stroke-width="2.0"/>
+  
+  <line x1="17" y1="3" x2="22" y2="25.5" stroke="url(#gold)" stroke-width="2.0"/>
+  <line x1="83" y1="3" x2="78" y2="25.5" stroke="url(#gold)" stroke-width="2.0"/>
+  
+  <!-- Diagonal corner braces -->
+  <line x1="26" y1="3" x2="1.5" y2="25.5" stroke="url(#gold)" stroke-width="1.8"/>
+  <line x1="74" y1="3" x2="98.5" y2="25.5" stroke="url(#gold)" stroke-width="1.8"/>
+  
+  <!-- Table inner crossing -->
+  <line x1="36" y1="14.25" x2="64" y2="14.25" stroke="url(#gold)" stroke-width="0" />
+  
+  <!-- Pavilion Facets -->
+  <!-- Center elongated kite -->
+  <polygon points="50,25.5 47,54 50,75.5 53,54" stroke="url(#gold)" stroke-width="2.0" stroke-linejoin="round"/>
+  
+  <!-- Pavilion rays Left -->
+  <line x1="33" y1="25.5" x2="47" y2="54" stroke="url(#gold)" stroke-width="2.0"/>
+  <line x1="1.5" y1="25.5" x2="47" y2="54" stroke="url(#gold)" stroke-width="0"/>
+  <line x1="22" y1="25.5" x2="47" y2="54" stroke="url(#gold)" stroke-width="2.0"/>
+  <line x1="12" y1="25.5" x2="42" y2="60" stroke="url(#gold)" stroke-width="2.0"/>
+  
+  <!-- Pavilion rays Right -->
+  <line x1="67" y1="25.5" x2="53" y2="54" stroke="url(#gold)" stroke-width="2.0"/>
+  <line x1="78" y1="25.5" x2="53" y2="54" stroke="url(#gold)" stroke-width="2.0"/>
+  <line x1="88" y1="25.5" x2="58" y2="60" stroke="url(#gold)" stroke-width="2.0"/>
+</svg>

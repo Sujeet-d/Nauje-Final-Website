@@ -9,6 +9,8 @@ import {
   Gift
 } from 'lucide-react';
 
+import { NaujeDiamondSymbol } from './NaujeDiamondSymbol';
+
 interface HeaderProps {
   onOpenConsultation: () => void;
   onNavigateSection?: (sectionId: string) => void;
@@ -71,30 +73,19 @@ export const Header: React.FC<HeaderProps> = ({
           <a 
             href="#" 
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3.5 group py-2"
             aria-label="NAUJÉ Design & Jewels Home"
           >
-            {/* Refined Fine Jewellery Solitaire Diamond & Imperial N Emblem */}
-            <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center p-1 bg-gradient-to-tr from-[#3A0E3C] to-[#5E1B5F] shadow-sm group-hover:scale-105 transition-transform duration-300">
-              <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-                <circle cx="20" cy="20" r="18" stroke="#D4AF37" strokeWidth="0.8" strokeDasharray="1.5 2" />
-                <circle cx="20" cy="20" r="15.5" stroke="#FCE7B8" strokeWidth="0.6" />
-                {/* Brilliant Diamond Silhouette */}
-                <polygon points="12,14 28,14 32,19 20,31 8,19" fill="none" stroke="#D4AF37" strokeWidth="1" />
-                <polygon points="15,14 25,14 23,19 17,19" fill="#FCE7B8" opacity="0.6" />
-                <polygon points="17,19 20,31 23,19" fill="#D4AF37" opacity="0.85" />
-                <polygon points="8,19 20,31 17,19" fill="#D4AF37" opacity="0.4" />
-                <polygon points="32,19 20,31 23,19" fill="#D4AF37" opacity="0.4" />
-                {/* Solitaire Spark */}
-                <circle cx="20" cy="11.5" r="1" fill="#FFF2D6" />
-              </svg>
+            {/* Official NAUJÉ Diamond Emblem */}
+            <div className="flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+              <NaujeDiamondSymbol className="w-10 h-8 sm:w-11 sm:h-9" glow={true} />
             </div>
 
-            <div className="flex flex-col">
-              <span className="font-serif text-2xl sm:text-3xl tracking-[0.2em] font-normal text-[#2D2232] uppercase leading-none group-hover:text-[#4A154B] transition-colors">
+            <div className="flex flex-col justify-center">
+              <span className="font-serif text-2xl sm:text-[1.75rem] tracking-[0.22em] font-normal text-[#2D2232] uppercase leading-none group-hover:text-[#4A154B] transition-colors">
                 NAUJÉ
               </span>
-              <span className="text-[9px] tracking-[0.25em] uppercase text-[#7D6B82] font-sans font-medium mt-1 leading-none">
+              <span className="text-[9px] sm:text-[10px] tracking-[0.28em] uppercase text-[#B88636] font-sans font-semibold mt-1.5 leading-none">
                 DESIGN & JEWELS
               </span>
             </div>
